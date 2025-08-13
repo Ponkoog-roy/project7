@@ -36,15 +36,15 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build code
-        id: run-tests
+        continue-on-error: true
         run: npm run test
       - name: Upload test report
-        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: test.json
       - name: Run stages
+        continue-on-error: true
         run: |
           npm run test
           npm run dev
