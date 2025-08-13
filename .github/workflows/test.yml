@@ -39,11 +39,15 @@ jobs:
         id: run-tests
         run: npm run test
       - name: Upload test report
-        if: failure() && steps.run-tests.outcome == 'failure'
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: test-report
           path: test.json
+      - name: Run stages
+        run: |
+          npm run test
+          npm run dev
   failures:
     needs: [lint, build]
     if: failure()
