@@ -35,21 +35,20 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build code
-        id: builds
-        run: npm run build
-      - name: Upload artifacts
-        if: failure() && steps.builds.outcome == 'failure'
-        uses: actions/upload-artifact@v3
+        id: run-tests
+        run: npm run test
+      - name: Upload test report
+        if: failure() && steps.run-tests.outcome == 'failure'
+        uses: actions/upload-artifact@v4
         with:
-          name: build-output
-          path: build.json
+          name: test-report
+          path: test.json
   failures:
     needs: [lint, build]
+    if: failure()
     runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
       - name: Download artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-output
+        run: echo "get error"
