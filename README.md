@@ -10,3 +10,21 @@ Django
 Spring Boot
 Flask
 Database configuration files
+
+
+
+
+User Browser
+      │
+      ▼
+ Nginx / Web Server
+      │
+      ▼
+ Static Files
+ (HTML, CSS, JS)
+      │
+      ▼
+ API Calls (if configured)
+      │
+      ▼
+ Backend Service
