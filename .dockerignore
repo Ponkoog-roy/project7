@@ -1,0 +1,14 @@
+node_modules
+.env
+
+.git
+.gitignore
+
+.vscode
+
+terraform/
+.terraform/
+*.tfstate
+*.tfstate.backup
+
+README.md
