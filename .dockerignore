@@ -6,9 +6,4 @@ node_modules
 
 .vscode
 
-terraform/
-.terraform/
-*.tfstate
-*.tfstate.backup
-
 README.md
